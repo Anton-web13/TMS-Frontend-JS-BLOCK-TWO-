@@ -1,113 +1,96 @@
 //  1)
-const helloOleg = function(value) {
+const sayHello = function(name) {
+    const SPECIAL_NAME = 'mark';
+    const isMark = name.toLowerCase() === SPECIAL_NAME;
 
-    if(value === 'Mark') {
-        console.log(`Hi, ${value}`)
-    } else {
-        console.log(`Hello, ${value}`)
+    if(isMark) {
+        return `Hi, ${name}`;
     }
+
+    return `Hello, ${name}`;
 }
 
-helloOleg('Pol');
+console.log(sayHello('Mark'));
 
 
 //  2)
 const hypotenuse = function(n, m) {
-
-    const result = (n*n) + (m*m);
-    console.log(Math.sqrt(result));
+    return Math.sqrt( Math.pow(n,2) + Math.pow(m,2));
 }
 
-hypotenuse(4, 4);
+console.log(hypotenuse(4, 4));
 
 
 // 3)
 const min = function(a ,b) {
-    let minValue = 0;
-    let maxValue = 0;
+
     if(a < b) {
-        minValue = a;
-        maxValue = b;
-    } else {
-        minValue = b;
-        maxValue = a;
+        return a;
+    } else if (a > b){
+        return b;
     }
 
-    console.log(minValue);
+    return 'Numbers are equal'
 }
 
-min(3, -1)
+console.log(min(3, 5));
 
 // 4 )
 const isEven = function(value) {
-    if(value % 2 === 0) {
-        value = 'true';
-    } else {
-        value = 'false';
-    }
-
-    console.log(value);
+    return value % 2 === 0;
 }
 
-isEven(98);
+console.log(isEven(97));
 
 // 5)
-const deleteChars = function() {
-    const stringValue = 'Hello';
-    console.log(stringValue.slice(1, -1));
+const deleteChars = function(value) {
+    return value.slice(1, -1);
 }
 
-deleteChars();
+console.log(deleteChars('Hello'));
 
 // 6)
 const stringValue = function(value) {
-    const resultOneLetter = value[0].toUpperCase();
-    const resultAllLetter = value.slice(1).toLowerCase();
-    const resultAllLetterWhitoutLastLetter = value.slice(1, -1).toLowerCase();
-    let lastLetter = value.slice(value.length -1);
+    const firstCapitalLetter = value[0].toUpperCase();
+    const isCharsAmountEven = value.length % 2 === 0;
 
-    if(value.length % 2 === 0) {
-        lastLetter = lastLetter.toUpperCase();
-        console.log(`${resultOneLetter}${resultAllLetterWhitoutLastLetter}${lastLetter}`);
-    } else {
-        console.log(`${resultOneLetter}${resultAllLetter}`);
+    if(isCharsAmountEven) {
+        const restWord = value.slice(1, -1).toLowerCase();
+        const lastCapitalLetter = value[value.length - 1].toUpperCase();
+
+        return `${firstCapitalLetter}${restWord}${lastCapitalLetter}`;
     }
 
+    return `${firstCapitalLetter}${value.slice(1).toLowerCase()}`;
 }
 
-stringValue('helflo');
+console.log(stringValue('helflw'));
 
 // 7)
 const checkLetterCase = function(value) {
     if(value.toUpperCase() === value) {
-        console.log("Оууу май, большая буква!")
-    } else {
-        console.log("Нет уж, маленькие буквы - скучно")
+        return "Оууу май, большая буква!";
     }
+
+    return "Нет уж, маленькие буквы - скучно";
 }
 
-checkLetterCase('F');
+console.log(checkLetterCase('F'));
 
 // 8)
-const concatenateOfWords = function(firstWord, secondtWord) {
-    console.log(`${firstWord} ${secondtWord}`);
+const concatenateOfWords = function(firstWord, secondWord) {
+    return `${firstWord} ${secondWord}`;
 }
 
-concatenateOfWords('Hello', 'World');
+console.log(concatenateOfWords('Hello', 'World'));
 
 
 // 9)
 const checkStringLength = function(string, number) {
-    if(string.length > number) {
-        console.log('String is too long!');
-    } else if (string.length < number) {
-        console.log('String is too little!');
-    } else {
-        console.log(string);
-    }
+    return string.length > number ? 'String is too long!' : 'String is too little!';
 }
 
-checkStringLength('Hello my friend', 16);
+console.log(checkStringLength('Hello my friend', 16));
 
 
 
