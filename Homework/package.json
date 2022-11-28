@@ -1,0 +1,31 @@
+{
+  "name": "tms-frontend-js-block-two",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch": "npx parcel two__block.html --open"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Anton-web13/TMS-Frontend-JS-BLOCK-TWO-.git"
+  },
+  "keywords": [
+    "npm",
+    "sass",
+    "parcel",
+    "js",
+    "nodejs"
+  ],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Anton-web13/TMS-Frontend-JS-BLOCK-TWO-/issues"
+  },
+  "homepage": "https://github.com/Anton-web13/TMS-Frontend-JS-BLOCK-TWO-#readme",
+  "devDependencies": {
+    "@parcel/transformer-sass": "^2.8.0",
+    "parcel": "^2.8.0"
+  }
+}
