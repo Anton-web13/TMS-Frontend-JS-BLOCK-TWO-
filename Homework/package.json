@@ -25,7 +25,7 @@
   },
   "homepage": "https://github.com/Anton-web13/TMS-Frontend-JS-BLOCK-TWO-#readme",
   "devDependencies": {
-    "@parcel/transformer-sass": "^2.7.0",
+    "@parcel/transformer-sass": "^2.8.0",
     "parcel": "^2.8.0"
   }
 }

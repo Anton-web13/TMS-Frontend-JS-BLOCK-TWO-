@@ -42,10 +42,11 @@ const allLetterFor = (letterArray) => {
 
     for (let i = 0; i < letterArray.length; i++) {
         const ONE_ELEMENT_OF_ARRAY = letterArray[i].toUpperCase();
-        if (letterArray[i] === ONE_ELEMENT_OF_ARRAY) {
-            newLetterArray.push(letterArray[i].toLowerCase());
+        const letterEachStep = letterArray[i]
+        if (letterEachStep === ONE_ELEMENT_OF_ARRAY) {
+            newLetterArray.push(letterEachStep.toLowerCase());
         } else {
-            newLetterArray.push(letterArray[i].toUpperCase());
+            newLetterArray.push(letterEachStep.toUpperCase());
         }
     }
 
@@ -104,16 +105,16 @@ const allLetterMap = (letterArray) => {
         return;
     }
 
-    const stringNumbersArray = letterArray.map((val) => {
+    const letterEachStep = letterArray.map((val) => {
         const ONE_ELEMENT_OF_ARRAY = val.toUpperCase();
         if (val === ONE_ELEMENT_OF_ARRAY) {
             return (val.toLowerCase());
-        } else {
-            return (val.toUpperCase());
         }
+
+        return (val.toUpperCase());
     })
 
-    return stringNumbersArray;
+    return letterEachStep;
 }
 console.log(allLetterMap(['a', 'B', 'C', 'LJHHHL', 'GGGGg', 'g', 'EEE']));
 
@@ -129,9 +130,10 @@ const numbersArrayFunction = (value) => {
         return;
     }
 
-    const stringNumbersArray = []
+    const stringNumbersArray = [];
     for (let i = 0; i < value.length; i++) {
-        stringNumbersArray.push(`Value: ${value[i]}, Index: ${value.indexOf(value[i])}, Squared: ${Math.pow(value[i], 2)}`);
+        const eachValue = value[i];
+        stringNumbersArray.push(`Value: ${eachValue}, Index: ${value.indexOf(eachValue)}, Squared: ${Math.pow(eachValue, 2)}`);
     }
 
     return stringNumbersArray;
@@ -147,7 +149,8 @@ const numbersArrayFunctionWhile = (value) => {
     let i = 0;
     const stringNumbersArray = [];
     while (i < value.length) {
-        stringNumbersArray.push(`Value: ${value[i]}, Index: ${value.indexOf(value[i])}, Squared: ${Math.pow(value[i], 2)}`);
+        const eachValue = value[i];
+        stringNumbersArray.push(`Value: ${eachValue}, Index: ${value.indexOf(eachValue)}, Squared: ${Math.pow(eachValue, 2)}`);
         i++;
     }
 
@@ -178,13 +181,11 @@ const numbersArrayFunctionMap = (value) => {
         return;
     }
 
-    const stringNumbersArray = value.map((val) => {
-        return `Value: ${val}, index: ${value.indexOf(val)}, Squared: ${Math.pow(val, 2)}`;
-    })
+    const numberEachStep = value.map((val) => `Value: ${val}, index: ${value.indexOf(val)}, Squared: ${Math.pow(val, 2)}`)
 
-    return stringNumbersArray;
+    return numberEachStep;
 }
-console.log(numbersArrayFunctionMap([3,48,6]));
+console.log(numbersArrayFunctionMap([3,8,6]));
 
 
 
@@ -199,15 +200,23 @@ const allValues = (value) => {
         return;
     }
 
+    // const number = 55;
+    // const len = Math.ceil(Math.log10(number + 1));
+    // console.log(len); // 2
+    // console.log(number.length); // undefined
+    //     if (value[i].length % 2 === 0) evenValues.push(value[i]);
+    //     if (string % 2 === 0) evenValues.push(string);
+
     const evenValues = [];
     for (let i = 0; i < value.length; i++) {
-        if (value[i].length % 2 === 0) evenValues.push(value[i]);
+        const string = value[i];
+        if (typeof string === 'string' && string.length % 2 === 0) evenValues.push(string);
     }
 
     return evenValues;
 }
 
-console.log(allValues(["Hiyy", 25, 3, 46, 5, "JSdg", 2, "C+h+ii"]));
+console.log(allValues(["Hiyy", 25, 3, 46, 5, "JSjg", 2, "C+h+ii"]));
 
 
 // while
@@ -219,7 +228,8 @@ const allValuesWhile = (value) => {
     let i = 0;
     const evenValues = [];
     while (i < value.length) {
-        if (value[i].length % 2 === 0) evenValues.push(value[i]);
+        const string = value[i];
+        if (typeof string === 'string' && string.length % 2 === 0) evenValues.push(string);
         i++;
     }
 
@@ -236,9 +246,8 @@ const allValuesForOf = (value) => {
     }
 
     const evenValues = [];
-
     for (const val of value) {
-        if (val.length % 2 === 0) evenValues.push(val);
+        if (typeof val === 'string' && val.length % 2 === 0) evenValues.push(val);
     }
 
     return evenValues;
@@ -254,7 +263,10 @@ const allValuesFilter = (value) => {
     }
 
     return value.filter((val) => {
-        return val.length % 2 === 0;
+        // return val.length % 2 === 0;
+        if (typeof val === 'string' && val.length % 2 === 0) {
+            return val;
+        }
     })
 }
 
