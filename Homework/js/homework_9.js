@@ -26,7 +26,7 @@ const getVideosOnId = (videos) => {
     }, {});
 };
 
-// console.log(getVideosOnId(videos));
+console.log(getVideosOnId(videos));
 
 
 // 2)
@@ -54,22 +54,18 @@ const boxarts = [
 ]
 
 const areaBox = (boxs) => {
+    return boxs.reduce((maxSize, {width, height, url}) => {
+        const videoSquare = width * height;
 
-    const newMultiply = boxs.map(({width, height, url}) => {
-
-        const multiply = width * height;
-
-        return {
-            multiply,
-            url,
+        if (maxSize === Math.max(videoSquare)) {
+            maxSize.push(url)
         }
 
-    }).reduce((result, multiply) => (result > multiply ? result.url : multiply.url));
-
-    return newMultiply
+        return url;
+    });
 };
 
-// console.log(areaBox(boxarts));
+console.log(areaBox(boxarts));
 
 
 // 3)
@@ -93,29 +89,28 @@ const moreThanOne = (oneArray) => {
     return +entries[0][0]
 };
 
-// console.log(moreThanOne([5,5,2,2,2,2,3,3,3,3,3,3,3,3,3,3]));
+console.log(moreThanOne([5,5,2,2,2,2,3,3,3,3,3,3,3,3,3,3]));
 
 
 // 4)
-const filterFunction = (mixingOfWords) => {
+const filterFunction = (obj) => {
+    const entries = Object.entries(obj);
 
-    const newObj = {};
+    return entries.reduce((result, [key, value]) => {
+       if (value) {
+           result[key] = value
+       }
 
-    Object.entries(mixingOfWords).map(([key]) => {
-        if (mixingOfWords[key] !== null && mixingOfWords[key] !== undefined) {
-            return newObj[key] = mixingOfWords[key];
-        }
-    });
-    return newObj;
+       return result
+    }, {});
 };
 
-// console.log(filterFunction({ a: 1, b: "Hello", c: null, z: undefined}));
+console.log(filterFunction({ a: 1, b: "Hello", c: null, z: undefined}));
 // console.log(filterFunction({name: "alex", age: 10, friends: [], address: null}));
 
 
 // 5)
 const numberIsOne = (oneArray) => {
-
     const newArray = oneArray.reduce((result, number) => {
 
         if (result[number]) {
@@ -140,13 +135,59 @@ const numberIsOne = (oneArray) => {
 };
 
 const result = numberIsOne([1,1,2,2,9,3,3,4,4]);
-
-// console.log(result[0])
+console.log(result[0])
 
 
 // 6)
+const cutString = (string, availableChars) => {
+    if (string.length > availableChars) {
+        return `${string.slice(0, availableChars)}...`
+    };
+
+    return string;
+};
+
+console.log(cutString("Hello", 3));
 
 
+// 7)
+Array.prototype.customMap = function (callback) {
+    const result = [];
+
+    for (let i = 0; i < this.length; i++) {
+        const currentItem = this[i];
+
+        const newItem = callback(currentItem, i, this);
+
+        result.push(newItem);
+    }
+
+    return result;
+}
+
+const x = [1,2,3];
+console.log(x.customMap((item) => item * 2));
+
+
+// 8)
+Array.prototype.customFilter = function (callback) {
+    const result = [];
+
+    for (let i = 0; i < this.length; i++) {
+        const currentItem = this[i];
+
+        const isAcceptable = callback(currentItem, i, this);
+
+        if (isAcceptable) {
+            result.push(currentItem);
+        }
+    }
+
+    return result;
+}
+
+const xs = [1,2,3];
+console.log(xs.customFilter((item) => item >= 2));
 
 
 
