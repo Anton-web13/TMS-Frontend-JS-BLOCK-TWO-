@@ -77,11 +77,11 @@ const colorsOfGloves = ["red", "green", "red", "blue", "blue"];
 
 const getPairsOfGloves = (colors) => {
 
-    const colorsToObject = colors.reduce((result, number) => {
-        if (result[number]) {
-            result[number] += 1;
+    const colorsToObject = colors.reduce((result, color) => {
+        if (result[color]) {
+            result[color] += 1;
         } else {
-            result[number] = 1;
+            result[color] = 1;
         }
 
         return result;
@@ -91,9 +91,7 @@ const getPairsOfGloves = (colors) => {
 
     const sumOfPairs = [];
     let valueOfPairs = 0;
-    for (const value of entries) {
-        const colorOfPairs = value[0];
-        const numberOfPairs = value[1];
+    for (const [colorOfPairs, numberOfPairs] of entries) {
 
         if (numberOfPairs % 2 === 0) {
             sumOfPairs.push(` Pairs of ${colorOfPairs}: ${numberOfPairs / 2}`);
