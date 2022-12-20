@@ -34,11 +34,11 @@ const romanNumeral = {
     M: 1000,
 };
 
-const getDecimalNumeral = (allNumeral, date) => {
+const getDecimalNumeral = (allNumeral, numbers) => {
 
-    const dateToArray = Array.from(date);
+    const numbersToArray = Array.from(numbers);
 
-    const dateToObject = dateToArray.reduce((result, number) => {
+    const numbersToObject = numbersToArray.reduce((result, number) => {
         if (result[number]) {
             result[number] += 1;
         } else {
@@ -48,7 +48,7 @@ const getDecimalNumeral = (allNumeral, date) => {
         return result;
     }, {});
 
-    const entries = Object.entries(dateToObject);
+    const entries = Object.entries(numbersToObject);
 
     let decimalCentury = 0;
     for (const [symbolOfDate, repeatOfDate] of entries) {
