@@ -5,7 +5,7 @@ const camelCase = (string) => {
     return getStringWithSpace;
 }
 
-console.log(camelCase("helloMyDearFriend"));
+// console.log(camelCase("helloMyDearFriend"));
 
 // 2)
 const findMissing = (numbers) => {
@@ -20,7 +20,7 @@ const findMissing = (numbers) => {
     return "Nothing is found!"
 };
 
-console.log(findMissing([1, 3, 5, 9, 11]));
+// console.log(findMissing([1, 3, 5, 9, 11]));
 
 
 // 3)
@@ -67,7 +67,7 @@ const getDecimalNumeral = (allNumeral, date) => {
     return `${decimalCentury} century`;
 };
 
-console.log(getDecimalNumeral(romanNumeral, "VIIII"));
+// console.log(getDecimalNumeral(romanNumeral, "VIIII"));
 
 // MDCLXVI  MMVIII  XXIII  XXI  MMXXII  VIIII
 
@@ -96,12 +96,12 @@ const getPairsOfGloves = (colors) => {
         const numberOfPairs = value[1];
 
         if (numberOfPairs % 2 === 0) {
-            sumOfPairs.push(` Pairs of ${colorOfPairs}: ${numberOfPairs}`);
+            sumOfPairs.push(` Pairs of ${colorOfPairs}: ${numberOfPairs / 2}`);
             valueOfPairs += numberOfPairs;
         }
     }
 
-    return `${valueOfPairs}. ${sumOfPairs}`;
+    return `${valueOfPairs / 2}. ${sumOfPairs}`;
 };
 
 console.log(getPairsOfGloves(colorsOfGloves));
@@ -120,7 +120,7 @@ const getFactorial = (number) => {
     return number * getFactorial(number - 1);
 }
 
-console.log(getFactorial(5))
+// console.log(getFactorial(5))
 
 
 
