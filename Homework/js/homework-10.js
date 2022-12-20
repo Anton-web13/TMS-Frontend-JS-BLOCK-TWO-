@@ -51,9 +51,7 @@ const getDecimalNumeral = (allNumeral, date) => {
     const entries = Object.entries(dateToObject);
 
     let decimalCentury = 0;
-    for (const value of entries) {
-        const symbolOfDate = value[0];
-        const repeatOfDate = value[1];
+    for (const [symbolOfDate, repeatOfDate] of entries) {
 
         decimalCentury += (allNumeral[symbolOfDate]) * (repeatOfDate);
     }
@@ -67,7 +65,7 @@ const getDecimalNumeral = (allNumeral, date) => {
     return `${decimalCentury} century`;
 };
 
-// console.log(getDecimalNumeral(romanNumeral, "VIIII"));
+console.log(getDecimalNumeral(romanNumeral, "VIIII"));
 
 // MDCLXVI  MMVIII  XXIII  XXI  MMXXII  VIIII
 
@@ -102,7 +100,7 @@ const getPairsOfGloves = (colors) => {
     return `${valueOfPairs / 2}. ${sumOfPairs}`;
 };
 
-console.log(getPairsOfGloves(colorsOfGloves));
+// console.log(getPairsOfGloves(colorsOfGloves));
 
 // ["red", "green", "red", "blue", "blue"];
 // ["red", "red", "red", "red", "red", "red"];
