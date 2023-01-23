@@ -73,11 +73,10 @@ const addElement = (numberOfUser) => {
     mainSection.append(div);
 };
 
-
 const cloneOfUsers = (numberOfUsers) => {
     for (let i = 1; i <= numberOfUsers; i++) {
-        setMainSection();
         addElement(i);
+
     }
 };
 
@@ -109,7 +108,7 @@ const removeOfUsers = () => {
 };
 removeOfUsers();
 
-const allValueOfUsersNumbers = () => {
+const getResult = () => {
     const result = document.querySelector(".getValues");
 
     result.addEventListener("click", (item) => {
@@ -119,6 +118,8 @@ const allValueOfUsersNumbers = () => {
         Array.from(document.querySelectorAll(".number, .name")).forEach(value => {
             numbersNamesValues.push(value.value);
         });
+
+        console.log(numbersNamesValues)
 
         for(let i = 0; i < numbersNamesValues.length - 1; i+=2){
             objectArray.push({"name": numbersNamesValues[i], "value": numbersNamesValues[i+1]})
@@ -132,22 +133,35 @@ const allValueOfUsersNumbers = () => {
     });
 };
 
-allValueOfUsersNumbers();
+getResult();
 
+const button = document.querySelector('.getValues');
 
+function count() {
+    let counter = 0;
+    return function() {
+        return counter+=1;
+    };
+}
 
+const level = () => {
+    const counter = count(); // создаем отдельный инстанс функции счетчика для каждой кнопки
+    button.addEventListener('click', function() {
+        const xdfgdgt = 0;
+        this.textContent = counter(); // прибавляем +1 к счетчику внутри counter
+    });
+};
 
-
-
+level();
 
 
 
 // const level = () => {
-
+//
 //     for (let i = 1; i <= 1; i++) {
 //         let numberOfLevel = i;
 //         let counter;
-
+//
 //         if (i === 1) {
 //             counter = 3;
 //         } else if (i === 2) {
@@ -155,35 +169,35 @@ allValueOfUsersNumbers();
 //         } else if (i === 3) {
 //             counter = 1;
 //         }
-
+//
 //         alert(`You are at ${numberOfLevel} level and you have just ${counter} attempts`);
-
+//
 //         const randomFunction = () => {
 //             const random = Math.floor(Math.random() * 100);
-
+//
 //             return random;
 //         };
-
+//
 //         const random = randomFunction();
-
-
+//
+//
 //         const myFunction = (randomNumber) => {
-
+//
 //             console.log(`randomNumber: ${randomNumber}`);
-
+//
 //             console.log(counter);
 //             const userNumber = Number(prompt('What number is given?'));
-
+//
 //             console.log(`userNumber: ${userNumber}`);
-
+//
 //             if (userNumber === randomNumber) {
 //                 alert("Is found");
 //             } else {
-
+//
 //                 counter--
-
+//
 //                 alert(`Not found and you have just ${counter} attempts`);
-
+//
 //                 if (userNumber > randomNumber && counter >= 1) {
 //                     alert("The number must be less");
 //                 } else if (userNumber < randomNumber && counter >= 1) {
@@ -192,14 +206,14 @@ allValueOfUsersNumbers();
 //                     alert("The time is out");
 //                     return;
 //                 }
-
+//
 //                 myFunction(random);
 //             }
-
+//
 //         };
-
+//
 //         myFunction(random);
 //     }
 // };
-
+//
 // level();
