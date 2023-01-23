@@ -1,3 +1,63 @@
-// body {
-//     background-color: red;
-// }
+.section {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+  .user {
+    width: 250px;
+    height: 150px;
+    text-align: center;
+    align-items: center;
+    border: 1px solid red;
+    border-radius: 20px;
+    margin: 20px;
+
+    .p {
+      font-size: 24px;
+      text-align: center;
+      justify-content: center;
+      align-items: center;
+      margin: 10px 0 10px 0;
+    }
+  }
+}
+
+
+.header {
+  width: 250px;
+  height: 100px;
+  text-align: center;
+  align-items: center;
+  border: 1px solid red;
+  border-radius: 20px;
+  margin: 20px;
+  margin: 0 auto;
+
+  .p {
+    font-size: 24px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    margin: 10px 0 10px 0;
+  }
+
+  .inputUsers {
+    width: 50px;
+    padding: 10px;
+    text-align: center;
+  }
+}
+
+.deleteUsers {
+  width: 60px;
+  height: 40px;
+}
+
+.inputSettings {
+  text-align: center;
+  display: block;
+  margin: 0 auto;
+  padding: 10px;
+  margin-bottom: 10px;
+}
