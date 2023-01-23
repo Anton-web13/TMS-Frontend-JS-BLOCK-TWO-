@@ -1,44 +1,54 @@
 // 2)
+// alert("Welcome to game!");
+
+const getRandomNumber = () => {
+    const random = Math.floor(Math.random() * 100);
+
+    return random;
+};
+const random = getRandomNumber();
+
+console.log(random);
+
 const setHeader = () => {
     const header = document.createElement("div");
     const div = document.createElement("div");
     const p = document.createElement('p');
     const input = document.createElement('input');
     const reset = document.createElement('button');
+    const get = document.createElement('button');
 
     div.classList.add('header');
     p.classList.add('p');
     input.classList.add('inputUsers');
-    reset.classList.add('deleteUsers');
+    reset.classList.add('resetUsers');
+    get.classList.add('resetUsers','getValues');
 
     p.textContent = "The number of users:";
     reset.textContent = "Reset";
+    get.textContent = "Get";
 
     div.append(p);
     div.append(input);
     div.append(reset);
+    div.append(get);
     header.append(div);
 
     document.body.append(header);
 };
-
 setHeader();
 
 const numbersOfUsers = document.querySelector('.inputUsers');
 
-
 const setMainSection = () => {
     const section = document.createElement("div");
-
     section.classList.add('section');
-
     document.body.append(section);
 };
-
 setMainSection();
 
 
-const addElement = () => {
+const addElement = (numberOfUser) => {
     const mainSection = document.querySelector(".section")
 
     const div = document.createElement("div");
@@ -46,54 +56,37 @@ const addElement = () => {
     const inputOfNumber = document.createElement('input');
     const p = document.createElement('p');
 
-    inputOfNAme.classList.add('inputSettings');
+    inputOfNAme.classList.add('inputSettings', 'name');
     inputOfNAme.placeholder = "Name:";
-    inputOfNumber.classList.add('inputSettings');
+    inputOfNumber.classList.add('inputSettings', 'number');
     inputOfNumber.placeholder = "The value of number:";
 
     p.classList.add('p');
-    div.classList.add('user');
+    div.classList.add('user', `user_${numberOfUser}`);
 
-    p.textContent = "The player one:";
+    p.textContent = `The player ${numberOfUser}:`;
 
     div.append(p);
     div.append(inputOfNAme);
     div.append(inputOfNumber);
 
-    mainSection.append(div)
-
-    // setMainSection(div);
+    mainSection.append(div);
 };
 
 
-// const setMainSection = (div) => {
-//     const section = document.createElement("div");
-//
-//     section.classList.add('section');
-//
-//     section.append(div);
-//
-//     document.body.append(section);
-// };
-//
-// // setMainSection();
-
-
 const cloneOfUsers = (numberOfUsers) => {
-    console.log(numberOfUsers);
-
-    for (let i = 0; i < numberOfUsers; i++) {
+    for (let i = 1; i <= numberOfUsers; i++) {
         setMainSection();
-        addElement();
+        addElement(i);
     }
 };
 
 const getNumberOfUsers = () => {
     numbersOfUsers.addEventListener("change", () => {
+        remove();
         cloneOfUsers(numbersOfUsers.value);
     })
 };
-
 getNumberOfUsers();
 
 const remove = () => {
@@ -103,7 +96,7 @@ const remove = () => {
 };
 
 const removeOfUsers = () => {
-    const clickButton = document.querySelector('.deleteUsers');
+    const clickButton = document.querySelector('.resetUsers');
 
     clickButton.addEventListener("click", (even) => {
         if (even.target === clickButton) {
@@ -114,9 +107,32 @@ const removeOfUsers = () => {
     })
 
 };
-
 removeOfUsers();
 
+const allValueOfUsersNumbers = () => {
+    const result = document.querySelector(".getValues");
+
+    result.addEventListener("click", (item) => {
+        const numbersNamesValues = [];
+        const objectArray = [];
+
+        Array.from(document.querySelectorAll(".number, .name")).forEach(value => {
+            numbersNamesValues.push(value.value);
+        });
+
+        for(let i = 0; i < numbersNamesValues.length - 1; i+=2){
+            objectArray.push({"name": numbersNamesValues[i], "value": numbersNamesValues[i+1]})
+        }
+
+        for (const key of objectArray) {
+            if (random === Number(key.value)) {
+                alert(`The winner is ${key.name}`)
+            }
+        }
+    });
+};
+
+allValueOfUsersNumbers();
 
 
 
