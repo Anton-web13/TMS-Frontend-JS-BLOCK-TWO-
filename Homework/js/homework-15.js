@@ -1,5 +1,5 @@
 // 2)
-// alert("Welcome to game!");
+alert("Welcome to game!");
 
 const getRandomNumber = () => {
     const random = Math.floor(Math.random() * 100);
@@ -7,8 +7,6 @@ const getRandomNumber = () => {
     return random;
 };
 const random = getRandomNumber();
-
-console.log(random);
 
 const setHeader = () => {
     const header = document.createElement("div");
@@ -119,7 +117,6 @@ const getResult = () => {
             numbersNamesValues.push(value.value);
         });
 
-        console.log(numbersNamesValues)
 
         for(let i = 0; i < numbersNamesValues.length - 1; i+=2){
             objectArray.push({"name": numbersNamesValues[i], "value": numbersNamesValues[i+1]})
@@ -128,6 +125,10 @@ const getResult = () => {
         for (const key of objectArray) {
             if (random === Number(key.value)) {
                 alert(`The winner is ${key.name}`)
+            } else if (random > Number(key.value)) {
+                alert("The number must be greater");
+            } else if (random < Number(key.value)) {
+                alert("The number must be less");
             }
         }
     });
@@ -143,16 +144,6 @@ function count() {
         return counter+=1;
     };
 }
-
-const level = () => {
-    const counter = count(); // создаем отдельный инстанс функции счетчика для каждой кнопки
-    button.addEventListener('click', function() {
-        const xdfgdgt = 0;
-        this.textContent = counter(); // прибавляем +1 к счетчику внутри counter
-    });
-};
-
-level();
 
 
 
